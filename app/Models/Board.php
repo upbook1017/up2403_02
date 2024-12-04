@@ -19,7 +19,7 @@ class Board extends Model
 
     public function getData()
     {
-        return $this->name . $this->title . $this->message;
+        return $this->name . ':' . $this->message;
     }
 
 }

@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Board;
 use Illuminate\Http\Request;
 
-class topicController extends Controller
+class TopicController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data =[
-            'msg'=>'これはblade',
-        ];
-        return view('home.topic', $data);
+        $data = Board::all();
+        return view('home.topic', ['data1' => $data]);
     }
 }

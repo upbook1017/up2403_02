@@ -89,12 +89,11 @@
 
         <div class="scroll">
             <table id="topic2">
+                @foreach ($data1 as $data )
                 <tr>
-                    <th class="topic1">話題名：</th>
-                    <td>
-                        <input type="text" name="topic" value="" class="topic2" placeholder="15文字以内">
-                    </td>
+                    <th class="topic1">{{$data->getData()}}</th>
                 </tr>
+                @endforeach
             </table>
         </div>
 
