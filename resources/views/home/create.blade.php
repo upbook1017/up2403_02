@@ -80,7 +80,7 @@
                 <li><a href="home">一覧に戻る</a></li>
             </ul>
         </nav>
-        <form action="/home/create" method="post"><!--なぜかform属性記入後デザインがおかしくなる-->
+        <form action="/create" method="post"><!--なぜかform属性記入後デザインがおかしくなる-->
 
             <table id="create1">
                 @csrf

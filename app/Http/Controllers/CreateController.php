@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Board;
 
 class CreateController extends Controller
 {
@@ -11,13 +11,14 @@ class CreateController extends Controller
     {
         return view('home.create');//入力フォーム(create.blade.php)
     }
-    public function create1(Request $request)//DBのクエリビルダによるレコード追加
+    public function create1(Request $request)
     {
-        $param = [
-            'topic' => $request->topic,
-            'comment' => $request->comment,
-        ];
-        DB::table('topics_data')->insert($param);
-        return redirect('home.topic');//フォーム送信後、topic.blad.phpへ自動的にリダイレクト
+        $request->validate(Board::$rules);
+        $board = new Board;
+        $form = $request->all();
+        unset($form['_token']);
+        $board->fill($form)->save();
+        return redirect('/topic');
+
     }
 }
